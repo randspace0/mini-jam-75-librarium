@@ -14,6 +14,9 @@ public class Pedestal : MonoBehaviour
 
     public void Spell(SpellType spellType)
     {
-        statue.Spell(spellType);
+        if (statue != null)
+        {
+            statue.Spell(spellType);
+        }
     }
 }

@@ -13,11 +13,11 @@ public class ChildCollision : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        book.Collision(col);
+        book?.Collision(col);
     }
 
     void OnTriggerStay2D(Collider2D col)
     {
-        book.Collision(col);
+        book?.Collision(col);
     }
 }

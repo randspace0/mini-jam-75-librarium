@@ -12,12 +12,14 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerController>().GetComponent<PlayerController>();
+        player = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (player == null) return;
+
         if (player.hasWoodBook)
         {
             woodBookImage.enabled = true;
