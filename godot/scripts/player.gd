@@ -93,7 +93,7 @@ func _drop() -> void:
 	book.global_position = $FirePoint.global_position
 	get_parent().add_child(book)
 	held = ""
-	_clear_effects()
+	_clear_effects_one("water")  # stump stays so dropped wood doesn't undo the platform
 
 func _clear_effects() -> void:
 	for n in [stump, water]:

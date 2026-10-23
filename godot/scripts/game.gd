@@ -31,11 +31,13 @@ func play_sfx(stream: AudioStream) -> void:
 	_sfx.play()
 
 func start_level(n: int) -> void:
+	get_tree().paused = false
 	level = n
 	play_music(n)
 	get_tree().change_scene_to_file(LEVELS[n - 1])
 
 func retry() -> void:
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 func next_level() -> void:
@@ -45,5 +47,6 @@ func next_level() -> void:
 		to_menu()
 
 func to_menu() -> void:
+	get_tree().paused = false
 	play_music("menu")
 	get_tree().change_scene_to_file(MENU)

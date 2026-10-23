@@ -109,7 +109,10 @@ func _build_hud() -> void:
 	_label.add_theme_font_size_override("font_size", 32)
 	layer.add_child(_label)
 	add_child(layer)
-	_label.text = "Arrows move  |  Space cast  |  Q drop book"
+	var pause := CanvasLayer.new()
+	pause.set_script(load("res://scripts/pause_menu.gd"))
+	add_child(pause)
+	_label.text = "Esc pause  |  Arrows move  |  Space cast  |  Q drop book"
 
 func _on_burnt() -> void:
 	var last: bool = number >= Game.LEVELS.size()
