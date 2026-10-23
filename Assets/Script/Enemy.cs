@@ -6,6 +6,6 @@ public class Enemy : MonoBehaviour
 {
     public void TakeDamage()
     {
-        Destroy(this);
+        Destroy(gameObject);
     }
 }

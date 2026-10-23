@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
         // }
             
 
-       if (Input.GetKey(KeyCode.Space))
+       if (Input.GetKeyDown(KeyCode.Space))
         {
             if (currentAbility != null)
             {
@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             if (currentAbility != null)
             {

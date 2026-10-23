@@ -21,14 +21,14 @@ public class WoodAbility : MonoBehaviour, IAbility
         if (currentFireDelay <= 0f)
         {
             player.animator.SetTrigger("useWoodAbility");
-            DestroyCurrentStump();
             var hit = Physics2D.Raycast(player.transform.position, Vector2.down, Mathf.Infinity, LayerMask.GetMask("Ground"));
             if (hit.collider != null && hit.collider.gameObject.tag == "Pedestal")
             {
                 hit.collider.GetComponent<Pedestal>().Spell(SpellType.Wood);
             }
-            else
+            else if (hit.collider != null)
             {
+                DestroyCurrentStump();
                 currentStump = Instantiate(prefabStump, hit.point, Quaternion.identity);
             }
             currentFireDelay = FireDelay;
