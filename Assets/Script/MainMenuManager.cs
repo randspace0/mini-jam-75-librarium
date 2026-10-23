@@ -9,7 +9,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void PressPlay()
     {
-        SceneManager.LoadScene("Scene/Level1", LoadSceneMode.Single);
+        SceneManager.LoadScene("Level 1", LoadSceneMode.Single);
     }
 
     public void OpenURL(string url)

@@ -54,7 +54,10 @@ public class Statue : MonoBehaviour
                     state = StatueState.Burnt;
                     works = true;
 
-                    gameManager.GameOverIn();
+                    if (gameManager != null)
+                    {
+                        gameManager.LevelCompleteIn();
+                    }
                 }
                 break;
         };
