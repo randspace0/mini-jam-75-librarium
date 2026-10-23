@@ -2,6 +2,7 @@ extends Node2D
 # Builds a level from Unity-exported data. Positions are Unity units (y up); 24 px per unit.
 
 const U := 24.0
+const UiTheme := preload("res://scripts/ui_theme.gd")
 const TILES_DIR := "res://assets/tex/Tiles/"
 const Tiles := preload("res://scripts/tile_data.gd")
 
@@ -106,8 +107,12 @@ func _build_hud() -> void:
 	_label.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_label.position.y = 24
-	_label.add_theme_font_size_override("font_size", 32)
 	layer.add_child(_label)
+	_label.theme = UiTheme.make()
+	_label.add_theme_font_size_override("font_size", 20)
+	_label.add_theme_color_override("font_color", UiTheme.BG)
+	_label.add_theme_color_override("font_outline_color", UiTheme.INK)
+	_label.add_theme_constant_override("outline_size", 6)
 	add_child(layer)
 	var pause := CanvasLayer.new()
 	pause.set_script(load("res://scripts/pause_menu.gd"))
