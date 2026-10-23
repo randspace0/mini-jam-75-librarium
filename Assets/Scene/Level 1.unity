@@ -3646,6 +3646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverOverlay: {fileID: 1332297155}
+  nextScene: Level 2
 --- !u!4 &1118809038
 Transform:
   m_ObjectHideFlags: 0
