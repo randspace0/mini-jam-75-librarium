@@ -90,6 +90,8 @@ func _build_pedestal(pos: Vector2, statue: Node2D) -> void:
 func _build_log(pos: Vector2) -> void:
 	var l := RigidBody2D.new()
 	l.collision_layer = 1
+	l.collision_mask = 3  # layer 2 = water droplets, so they can push the log
+	l.add_to_group("log")
 	l.position = _p(pos)
 	var s := Sprite2D.new()
 	s.texture = load("res://assets/tex/log.png")

@@ -129,7 +129,7 @@ func _cast() -> void:
 				hit.collider.spell("water")
 			else:
 				water = load("res://scenes/water.tscn").instantiate()
-				water.global_position = hit.position
+				water.global_position = _spring_point(hit.position)
 				get_parent().add_child(water)
 		elif held == "wood":
 			if hit.collider.is_in_group("pedestal"):
@@ -140,6 +140,15 @@ func _cast() -> void:
 				stump.global_position = hit.position
 				get_parent().add_child(stump)
 	cooldown = COOLDOWN
+
+# Water wells up from the ground right beneath the log so it can float it; else under the player.
+func _spring_point(fallback: Vector2) -> Vector2:
+	var wood_log := get_tree().get_first_node_in_group("log") as CollisionObject2D
+	if not wood_log:
+		return fallback
+	var q := PhysicsRayQueryParameters2D.create(wood_log.global_position, wood_log.global_position + Vector2(0, 2000), 1, [wood_log.get_rid()])
+	var h := get_world_2d().direct_space_state.intersect_ray(q)
+	return h.position if h else fallback
 
 func _clear_effects_one(which: String) -> void:
 	var n = water if which == "water" else stump
